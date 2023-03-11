@@ -17,7 +17,8 @@ To access computed information in real-time, I recommend to implement your own O
 
 ### About ROS
 ROS (Robot Operating System) is a set of tools designed to develop software components in the field of robotics.
-
+# 0. Docker
+## See https://github.com/IldarGreat/dso/blob/ros_catkin/docker/README.md to run ros dso in docker!
 # 1. Installation
 
 ## 1. Install DSO. <br>
