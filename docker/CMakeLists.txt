@@ -8,7 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   cv_bridge
 )
 
-set(DSO_PATH $ENV{DSO_PATH})
+set(DSO_PATH /app/dso)
 message("\n\n---- LOOKING FOR DSO at\n\"${DSO_PATH}\"")
 
 
