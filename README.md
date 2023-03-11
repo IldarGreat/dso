@@ -15,19 +15,40 @@ To access computed information in real-time, I recommend to implement your own O
 * **A Photometrically Calibrated Benchmark For Monocular Visual Odometry**, *J. Engel, V. Usenko, D. Cremers*, In arXiv:1607.02555, 2016
 
 
+### About ROS
+ROS (Robot Operating System) is a set of tools designed to develop software components in the field of robotics.
 
 # 1. Installation
 
-1. Install DSO. We need DSO to be compiled with OpenCV (to read the vignette image), and with Pangolin (for 3D visualization).
-2. run 
+## 1. Install DSO. <br>
+We need DSO to be compiled with OpenCV (to read the vignette image), and with Pangolin (for 3D visualization). See the branch master
+## 2. Install ROS <br>
+ROS has several versions currently supported, melodic version on Ubuntu 18.04, noetic version on Ubuntu 20.4 (if you have Ubuntu 16.04 there is kinetic for it - no longer supported). <br>
 
-		export DSO_PATH=[PATH_TO_DSO]/dso
-		rosmake
-	
+To install ROS, select the version you need and go to the official Installation/Ubuntu - ROS Wiki documentation (https://wiki.ros.org/Installation/Ubuntu). Follow the documentation in paragraph 1.2,1.3,1.4, 1.5 (there is only the second pair of commands to set the path to ROS)
 
+Please note that you must have at least 2 GB of free space to install ROS.
 
+Check if the ros was installed with the command: <code>dpkg -s ros-(distro version)-ros</code>
+## 3. Install catkin
+For build, instead of a cmake, katkin is used. Install it <code>sudo apt-get install ros-(distro version)-catkin</code> <br>
+Please learn how to use katkin, for example packages and workspace
+## 4. Install package usb_cam
+usb_cam is the ros package that allows you to use images from a usb camera to ros nodes <br>
+Install it <code>sudo apt install ros-(distro version)-usb-cam</code> <br>
+Configure usb_cam for you camera before use it. Change file /opt/ros/(distro version)/share/usb_cam/launch/usb_cam-test.launch
+## 5. Export dso package
+<code>export dso (path)</code>
+Or you can change CMakeList.txt and specify the path to dso in it
 # 3 Usage
-everything as described in the DSO project - only this is for real-time camera input.
+## 1. Run ros core
+<code>roscore</code> <br>
+Do not close the terminal in which you ran this command!!!
+## 2. Run usb_cam
+<code>roslaunch usb_cam usb_cam-test.launch</code> <br>
+Do not close the terminal in which you ran this command!!!
+## 3. Run dso ros
+Everything as described in the DSO project - only this is for real-time camera input.
 
 
 		rosrun dso_ros dso_live image:=image_raw \
@@ -37,10 +58,7 @@ everything as described in the DSO project - only this is for real-time camera i
 
 
 ## 3.1 Accessing Data.
-see the DSO Readme. As of now, there is no default ROS-based `Output3DWrapper` - you will have to write your own.
-
-
-
+See the DSO Readme. As of now, there is no default ROS-based `Output3DWrapper` - you will have to write your own.
 
 # 4 Dependencies
 
